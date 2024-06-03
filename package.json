@@ -1,0 +1,15 @@
+{
+  "name": "torvis",
+  "version": "1.0.0",
+  "description": "A tool to visualize BitTorrent connections.",
+  "main": "server.js",
+  "author": "Glatinis",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "bencode": "^4.0.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+}
