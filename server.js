@@ -6,3 +6,5 @@ const txtDecoder = new TextDecoder();
 const rawTorrent = fs.readFileSync("example.torrent");
 const torrent = bencode.decode(rawTorrent);
 const announceUrl = txtDecoder.decode(torrent.announce);
+
+console.log(announceUrl);
