@@ -5,11 +5,15 @@
   "main": "server.js",
   "author": "Glatinis",
   "license": "ISC",
-  "type": "module",
+  "type": "commonjs",
   "dependencies": {
-    "bencode": "^4.0.0"
+    "bencode": "^0.9.0",
+    "bignum": "^0.13.1"
   },
   "scripts": {
     "start": "node server.js"
+  },
+  "devDependencies": {
+    "@babel/helper-compilation-targets": "^7.24.7"
   }
 }
