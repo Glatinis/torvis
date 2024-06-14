@@ -7,6 +7,8 @@ module.exports.open = (filepath) => {
   return bencode.decode(fs.readFileSync(filepath));
 };
 
+module.exports.decode = bencode.decode;
+
 module.exports.infoHash = torrent => {
   const info = bencode.encode(torrent.info);
   return crypto.createHash("sha1").update(info).digest();

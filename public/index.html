@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torvis</title>
+</head>
+<body>
+    <h1>Torvis</h1>
+    <input type="file" name="torrentfile" id="torrentfile" onchange="uploadTorrent();">
+
+    <script>
+        async function uploadTorrent() {
+            const fileInput = document.getElementById("torrentfile");
+            const file = fileInput.files[0];
+
+            const formData = new FormData();
+            formData.append("torrentfile", file);
+
+            try {
+                const response = await fetch("/upload", {
+                    method: "POST",
+                    body: formData
+                });
+
+                const result = await response.json();
+                console.log("Result:", result);
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        }
+    </script>
+</body>
+</html>
