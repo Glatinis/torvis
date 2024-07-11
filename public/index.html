@@ -10,56 +10,9 @@
 </head>
 <body>
     <h1>Torvis</h1>
-    <input type="file" name="torrentfile" id="torrentfile" onchange="uploadTorrent();">
+    <input type="file"accept=".torrent" name="torrentfile" id="torrentfile" onchange="uploadTorrent();">
     <div id="peernet"></div>
 
-    <script>
-        async function uploadTorrent() {
-            const fileInput = document.getElementById("torrentfile");
-            const file = fileInput.files[0];
-
-            const formData = new FormData();
-            formData.append("torrentfile", file);
-
-            try {
-                const response = await fetch("/upload", {
-                    method: "POST",
-                    body: formData
-                });
-
-                const networkInfo = await response.json();
-                console.log("Result:", networkInfo);
-                buildNetwork(networkInfo, file);                
-
-            } catch (error) {
-                console.error("Error:", error);
-            }
-        }
-
-        function buildNetwork(networkInfo, file) {
-            let container = document.getElementById("peernet");
-
-            let nodes = [];
-            let edges = [];
-
-            nodes.push({id: 0, label: file.name, shape: "box"})
-
-            count = 1;
-            for (let prop in networkInfo) {
-                if (Object.prototype.hasOwnProperty.call(networkInfo, prop)) {
-                    nodes.push({id: count, label: prop});
-                    edges.push({from: 0, to: count});
-                    count++
-                }
-            }
-
-            let data = {
-                nodes: nodes,
-                edges: edges
-            };
-            let options = {height: "1000px"};
-            let network = new vis.Network(container, data, options);
-        }
-    </script>
+    <script src="vismanager.js"></script>
 </body>
 </html>
